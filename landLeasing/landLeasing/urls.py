@@ -20,4 +20,7 @@ from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    #TODO add cart, 
+    #TODO add application form 
+    
 ]
