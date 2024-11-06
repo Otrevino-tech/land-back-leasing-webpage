@@ -1,7 +1,5 @@
 # Impliment/ connect to sqlite3
 # UNTESTED 
-
-# 
 CREATE TABLE Tribe (TribeID int IDENTITY NOT NULL, Name varchar(40) NULL, Location varchar(25) NULL, ContactInfo int NULL, [Date] datetime NULL, PRIMARY KEY (TribeID));
 CREATE TABLE TribalLand (LandID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, Name varchar(25) NULL, Location varchar(25) NULL, District varchar(35) NULL, Acreage int NULL, Description varchar(100) NULL, [Date] datetime NULL, PRIMARY KEY (LandID));
 CREATE TABLE Lease (LeaseID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, MemberMemberID int NOT NULL, CostPerAcre int NULL, StartDate int NULL, EndDate int NULL, [Date] datetime NULL, PRIMARY KEY (LeaseID));
