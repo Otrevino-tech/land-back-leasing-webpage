@@ -1,0 +1,25 @@
+/* sqlite3 database implementation.
+*  UNTESTED / DEPRECIATED 
+*/
+
+
+CREATE TABLE Tribe (TribeID int IDENTITY NOT NULL, Name varchar(40) NULL, Location varchar(25) NULL, ContactInfo int NULL, [Date] datetime NULL, PRIMARY KEY (TribeID));
+CREATE TABLE TribalLand (LandID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, Name varchar(25) NULL, Location varchar(25) NULL, District varchar(35) NULL, Acreage int NULL, Description varchar(100) NULL, [Date] datetime NULL, PRIMARY KEY (LandID));
+CREATE TABLE Lease (LeaseID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, MemberMemberID int NOT NULL, CostPerAcre int NULL, StartDate int NULL, EndDate int NULL, [Date] datetime NULL, PRIMARY KEY (LeaseID));
+CREATE TABLE Member (MemberID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, EnrollmentNumber varchar(25) NULL, FirstName varchar(25) NULL, LastName varchar(25) NULL, PhoneNumber int NULL, Address varchar(25) NULL, City varchar(255) NULL, State varchar(25) NULL, ZipCode int NULL, PRIMARY KEY (MemberID));
+CREATE TABLE Survey (SurveyID int IDENTITY NOT NULL, LeaseLeaseID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, PRIMARY KEY (SurveyID));
+CREATE TABLE ApplicationCost (ApplicationFee int IDENTITY NOT NULL, MemberMemberID int NOT NULL, LeaseLeaseID int NOT NULL, Cost int NULL, [Date] datetime NULL, PRIMARY KEY (ApplicationFee));
+CREATE TABLE EnviromentalStudy (StudyID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Conducted varchar(5) NULL, [Date] datetime NULL, PRIMARY KEY (StudyID));
+CREATE TABLE AgriculturalStudy (AgStudyID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, [Date] datetime NULL, PRIMARY KEY (AgStudyID));
+CREATE TABLE GrazingRights (RightsID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, PRIMARY KEY (RightsID));
+ALTER TABLE TribalLand ADD CONSTRAINT FKTribalLand434943 FOREIGN KEY (TribeTribeID) REFERENCES Tribe (TribeID);
+ALTER TABLE Lease ADD CONSTRAINT FKLease94936 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
+ALTER TABLE Lease ADD CONSTRAINT FKLease307451 FOREIGN KEY (MemberMemberID) REFERENCES Member (MemberID);
+ALTER TABLE ApplicationCost ADD CONSTRAINT FKApplicatio715883 FOREIGN KEY (LeaseLeaseID) REFERENCES Lease (LeaseID);
+ALTER TABLE EnviromentalStudy ADD CONSTRAINT FKEnviroment744622 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
+ALTER TABLE AgriculturalStudy ADD CONSTRAINT FKAgricultur864101 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
+ALTER TABLE ApplicationCost ADD CONSTRAINT FKApplicatio611232 FOREIGN KEY (MemberMemberID) REFERENCES Member (MemberID);
+ALTER TABLE Survey ADD CONSTRAINT FKSurvey681032 FOREIGN KEY (LeaseLeaseID) REFERENCES Lease (LeaseID);
+ALTER TABLE GrazingRights ADD CONSTRAINT FKGrazingRig899287 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
+ALTER TABLE Member ADD CONSTRAINT FKMember362013 FOREIGN KEY (TribeTribeID) REFERENCES Tribe (TribeID);
+
