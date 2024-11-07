@@ -1,5 +1,6 @@
-# Impliment/ connect to sqlite3
-# UNTESTED 
+/* sqlite3 database implementation.
+*  UNTESTED / 
+*/
 CREATE TABLE Tribe (TribeID int IDENTITY NOT NULL, Name varchar(40) NULL, Location varchar(25) NULL, ContactInfo int NULL, [Date] datetime NULL, PRIMARY KEY (TribeID));
 CREATE TABLE TribalLand (LandID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, Name varchar(25) NULL, Location varchar(25) NULL, District varchar(35) NULL, Acreage int NULL, Description varchar(100) NULL, [Date] datetime NULL, PRIMARY KEY (LandID));
 CREATE TABLE Lease (LeaseID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, MemberMemberID int NOT NULL, CostPerAcre int NULL, StartDate int NULL, EndDate int NULL, [Date] datetime NULL, PRIMARY KEY (LeaseID));
@@ -19,3 +20,4 @@ ALTER TABLE ApplicationCost ADD CONSTRAINT FKApplicatio611232 FOREIGN KEY (Membe
 ALTER TABLE Survey ADD CONSTRAINT FKSurvey681032 FOREIGN KEY (LeaseLeaseID) REFERENCES Lease (LeaseID);
 ALTER TABLE GrazingRights ADD CONSTRAINT FKGrazingRig899287 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
 ALTER TABLE Member ADD CONSTRAINT FKMember362013 FOREIGN KEY (TribeTribeID) REFERENCES Tribe (TribeID);
+
