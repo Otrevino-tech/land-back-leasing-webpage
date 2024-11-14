@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <title> Land Leasing INC [MOCK]</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8"> 
+        <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    </head>
+
+    <body> 
+     
+        <header>
+            <logo>
+                <img src="" alt="placeholder for Logo">  
+            </logo>
+
+            <input type="text" placeholder="Search..." id="search-bar"> 
+            <ul> 
+                <!-- Home will host the general tab list and info-->
+                <a href="{% url 'about' %}"> About </a>
+                <a href="{% url 'cart' %}">Cart</a>
+                <a href="{% url 'home' %}"> Home </a>
+                <a href="{% url 'profile' %}" onclick="open()">Sign-in/Register</a>
+            </ul>
+        </header>
+
+       
+        <div class="top-tab">
+
+        </div>
+
+        {% block content %}{% endblock content %}
+    </body>
+
+    <footer> 
+        
+    </footer>
+ 
+</html> 

@@ -17,9 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from landlease_app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", views.client_home, name="home")
     #TODO add cart, 
     #TODO add application form 
     
