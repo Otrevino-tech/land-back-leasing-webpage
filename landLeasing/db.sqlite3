@@ -1,23 +1,24 @@
-/* sqlite3 database implementation.
-*  UNTESTED / 
+/* 
+New Database for LandLeasing 
 */
-CREATE TABLE Tribe (TribeID int IDENTITY NOT NULL, Name varchar(40) NULL, Location varchar(25) NULL, ContactInfo int NULL, [Date] datetime NULL, PRIMARY KEY (TribeID));
-CREATE TABLE TribalLand (LandID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, Name varchar(25) NULL, Location varchar(25) NULL, District varchar(35) NULL, Acreage int NULL, Description varchar(100) NULL, [Date] datetime NULL, PRIMARY KEY (LandID));
-CREATE TABLE Lease (LeaseID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, MemberMemberID int NOT NULL, CostPerAcre int NULL, StartDate int NULL, EndDate int NULL, [Date] datetime NULL, PRIMARY KEY (LeaseID));
-CREATE TABLE Member (MemberID int IDENTITY NOT NULL, TribeTribeID int NOT NULL, EnrollmentNumber varchar(25) NULL, FirstName varchar(25) NULL, LastName varchar(25) NULL, PhoneNumber int NULL, Address varchar(25) NULL, City varchar(255) NULL, State varchar(25) NULL, ZipCode int NULL, PRIMARY KEY (MemberID));
-CREATE TABLE Survey (SurveyID int IDENTITY NOT NULL, LeaseLeaseID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, PRIMARY KEY (SurveyID));
-CREATE TABLE ApplicationCost (ApplicationFee int IDENTITY NOT NULL, MemberMemberID int NOT NULL, LeaseLeaseID int NOT NULL, Cost int NULL, [Date] datetime NULL, PRIMARY KEY (ApplicationFee));
-CREATE TABLE EnviromentalStudy (StudyID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Conducted varchar(5) NULL, [Date] datetime NULL, PRIMARY KEY (StudyID));
-CREATE TABLE AgriculturalStudy (AgStudyID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, [Date] datetime NULL, PRIMARY KEY (AgStudyID));
-CREATE TABLE GrazingRights (RightsID int IDENTITY NOT NULL, TribalLandLandID int NOT NULL, Cost int NULL, Conducted varchar(5) NULL, PRIMARY KEY (RightsID));
-ALTER TABLE TribalLand ADD CONSTRAINT FKTribalLand434943 FOREIGN KEY (TribeTribeID) REFERENCES Tribe (TribeID);
-ALTER TABLE Lease ADD CONSTRAINT FKLease94936 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
-ALTER TABLE Lease ADD CONSTRAINT FKLease307451 FOREIGN KEY (MemberMemberID) REFERENCES Member (MemberID);
-ALTER TABLE ApplicationCost ADD CONSTRAINT FKApplicatio715883 FOREIGN KEY (LeaseLeaseID) REFERENCES Lease (LeaseID);
-ALTER TABLE EnviromentalStudy ADD CONSTRAINT FKEnviroment744622 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
-ALTER TABLE AgriculturalStudy ADD CONSTRAINT FKAgricultur864101 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
-ALTER TABLE ApplicationCost ADD CONSTRAINT FKApplicatio611232 FOREIGN KEY (MemberMemberID) REFERENCES Member (MemberID);
-ALTER TABLE Survey ADD CONSTRAINT FKSurvey681032 FOREIGN KEY (LeaseLeaseID) REFERENCES Lease (LeaseID);
-ALTER TABLE GrazingRights ADD CONSTRAINT FKGrazingRig899287 FOREIGN KEY (TribalLandLandID) REFERENCES TribalLand (LandID);
-ALTER TABLE Member ADD CONSTRAINT FKMember362013 FOREIGN KEY (TribeTribeID) REFERENCES Tribe (TribeID);
+CREATE TABLE Application (applicationID int IDENTITY NOT NULL, PRIMARY KEY (applicationID));
+CREATE TABLE [Local Government] (Government int IDENTITY NOT NULL, ApplicationApplication_ID int NOT NULL, PRIMARY KEY (Government));
+CREATE TABLE [Archaeological Survey] (archaeologicalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (archaeologicalID));
+CREATE TABLE [Biological Survey] (biologicalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (biologicalID));
+CREATE TABLE [Environmental  Survey] (environmentalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (environmentalID));
+CREATE TABLE [Legal Survey] (legalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (legalID));
+CREATE TABLE [Final Decision] (finalID int IDENTITY NOT NULL, [Biological SurveybiologicalID] int NOT NULL, [Archaeological SurveyarchaeologicalID] int NOT NULL, [Environmental  SurveyenvironmentalID] int NOT NULL, [Legal SurveylegalID] int NOT NULL, PRIMARY KEY (finalID));
+CREATE TABLE [Local Governmnet] (localID int IDENTITY NOT NULL, ApplicationapplicationID int NOT NULL, [Final DecisionfinalID] int NOT NULL, PRIMARY KEY (localID));
+ALTER TABLE [Local Government] ADD CONSTRAINT [FKLocal Gove53940] FOREIGN KEY (ApplicationApplication_ID) REFERENCES Application (applicationID);
+ALTER TABLE [Local Governmnet] ADD CONSTRAINT [FKLocal Gove654369] FOREIGN KEY (ApplicationapplicationID) REFERENCES Application (applicationID);
+ALTER TABLE [Biological Survey] ADD CONSTRAINT FKBiological721832 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
+ALTER TABLE [Environmental  Survey] ADD CONSTRAINT FKEnvironmen930296 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
+ALTER TABLE [Archaeological Survey] ADD CONSTRAINT FKArchaeolog717705 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
+ALTER TABLE [Legal Survey] ADD CONSTRAINT [FKLegal Surv379221] FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
+ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci173392] FOREIGN KEY ([Biological SurveybiologicalID]) REFERENCES [Biological Survey] (biologicalID);
+ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci83250] FOREIGN KEY ([Archaeological SurveyarchaeologicalID]) REFERENCES [Archaeological Survey] (archaeologicalID);
+ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci435018] FOREIGN KEY ([Environmental  SurveyenvironmentalID]) REFERENCES [Environmental  Survey] (environmentalID);
+ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci490888] FOREIGN KEY ([Legal SurveylegalID]) REFERENCES [Legal Survey] (legalID);
+ALTER TABLE [Local Governmnet] ADD CONSTRAINT [FKLocal Gove882032] FOREIGN KEY ([Final DecisionfinalID]) REFERENCES [Final Decision] (finalID);
+
 
