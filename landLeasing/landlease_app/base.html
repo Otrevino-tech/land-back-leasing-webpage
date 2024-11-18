@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'static/Mainstyle.css'}"> 
+        {% block title %}
+            <title> base(if this pops up theres something wrong lol) </title>
+        {% endblock %}
+    </head>
+
+    <body>
+        <!-- Nav here -->
+        <header> 
+
+            <a href='{% url "about" %}'> About </a>
+            <a href="{% url 'cart'%}"> Cart </a>
+            <a href="{% url 'home'%}"> Home </a>
+            <a id="profile-status" href="{% url 'profile'%}"> Log in / Signup </a>
+
+        </header>
+
+        <footer> 
+            <div class="tech-list"> 
+                
+            </div>  
+
+            <div class="legal-providers">
+
+
+            </div>
+        </footer>
+
+
+    </body>
+
+</html> 

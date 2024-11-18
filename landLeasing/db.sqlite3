@@ -1,24 +1,38 @@
-/* 
-New Database for LandLeasing 
-*/
-CREATE TABLE Application (applicationID int IDENTITY NOT NULL, PRIMARY KEY (applicationID));
-CREATE TABLE [Local Government] (Government int IDENTITY NOT NULL, ApplicationApplication_ID int NOT NULL, PRIMARY KEY (Government));
-CREATE TABLE [Archaeological Survey] (archaeologicalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (archaeologicalID));
-CREATE TABLE [Biological Survey] (biologicalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (biologicalID));
-CREATE TABLE [Environmental  Survey] (environmentalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (environmentalID));
-CREATE TABLE [Legal Survey] (legalID int IDENTITY NOT NULL, [Local GovernmnetlocalID] int NOT NULL, PRIMARY KEY (legalID));
-CREATE TABLE [Final Decision] (finalID int IDENTITY NOT NULL, [Biological SurveybiologicalID] int NOT NULL, [Archaeological SurveyarchaeologicalID] int NOT NULL, [Environmental  SurveyenvironmentalID] int NOT NULL, [Legal SurveylegalID] int NOT NULL, PRIMARY KEY (finalID));
-CREATE TABLE [Local Governmnet] (localID int IDENTITY NOT NULL, ApplicationapplicationID int NOT NULL, [Final DecisionfinalID] int NOT NULL, PRIMARY KEY (localID));
-ALTER TABLE [Local Government] ADD CONSTRAINT [FKLocal Gove53940] FOREIGN KEY (ApplicationApplication_ID) REFERENCES Application (applicationID);
-ALTER TABLE [Local Governmnet] ADD CONSTRAINT [FKLocal Gove654369] FOREIGN KEY (ApplicationapplicationID) REFERENCES Application (applicationID);
-ALTER TABLE [Biological Survey] ADD CONSTRAINT FKBiological721832 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
-ALTER TABLE [Environmental  Survey] ADD CONSTRAINT FKEnvironmen930296 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
-ALTER TABLE [Archaeological Survey] ADD CONSTRAINT FKArchaeolog717705 FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
-ALTER TABLE [Legal Survey] ADD CONSTRAINT [FKLegal Surv379221] FOREIGN KEY ([Local GovernmnetlocalID]) REFERENCES [Local Governmnet] (localID);
-ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci173392] FOREIGN KEY ([Biological SurveybiologicalID]) REFERENCES [Biological Survey] (biologicalID);
-ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci83250] FOREIGN KEY ([Archaeological SurveyarchaeologicalID]) REFERENCES [Archaeological Survey] (archaeologicalID);
-ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci435018] FOREIGN KEY ([Environmental  SurveyenvironmentalID]) REFERENCES [Environmental  Survey] (environmentalID);
-ALTER TABLE [Final Decision] ADD CONSTRAINT [FKFinal Deci490888] FOREIGN KEY ([Legal SurveylegalID]) REFERENCES [Legal Survey] (legalID);
-ALTER TABLE [Local Governmnet] ADD CONSTRAINT [FKLocal Gove882032] FOREIGN KEY ([Final DecisionfinalID]) REFERENCES [Final Decision] (finalID);
+CREATE TABLE Application (
+    applicationID INT IDENTITY PRIMARY KEY
+);
 
+CREATE TABLE LocalGovernment (
+    localID INT IDENTITY PRIMARY KEY,
+    applicationID INT REFERENCES Application(applicationID),
+    finalDecisionID INT REFERENCES FinalDecision(finalID)
+);
+
+CREATE TABLE ArchaeologicalSurvey (
+    archaeologicalID INT IDENTITY PRIMARY KEY,
+    localGovernmentID INT REFERENCES LocalGovernment(localID)
+);
+
+CREATE TABLE BiologicalSurvey (
+    biologicalID INT IDENTITY PRIMARY KEY,
+    localGovernmentID INT REFERENCES LocalGovernment(localID)
+);
+
+CREATE TABLE EnvironmentalSurvey (
+    environmentalID INT IDENTITY PRIMARY KEY,
+    localGovernmentID INT REFERENCES LocalGovernment(localID)
+);
+
+CREATE TABLE LegalSurvey (
+    legalID INT IDENTITY PRIMARY KEY,
+    localGovernmentID INT REFERENCES LocalGovernment(localID)
+);
+
+CREATE TABLE FinalDecision (
+    finalID INT IDENTITY PRIMARY KEY,
+    biologicalSurveyID INT REFERENCES BiologicalSurvey(biologicalID),
+    archaeologicalSurveyID INT REFERENCES ArchaeologicalSurvey(archaeologicalID),
+    environmentalSurveyID INT REFERENCES EnvironmentalSurvey(environmentalID),
+    legalSurveyID INT REFERENCES LegalSurvey(legalID)
+);
 
