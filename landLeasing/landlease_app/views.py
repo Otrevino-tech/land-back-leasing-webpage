@@ -10,11 +10,11 @@ def __admin_helper():
 # homes for landing page 
 def client_home(request):
     __client_helper()
-    return render(request, "templates/client/home.html", {})
+    return render(request, "client/home.html", {})
 
-def admin_home(request): 
+def admin_home(request):  
     __client_helper()
-    return render(request, "templates/admin/home.html", {})
+    return render(request, "admin/home.html", {})
 
 # Client
 def client_cart(request): 

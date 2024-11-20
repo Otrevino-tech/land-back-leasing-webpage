@@ -56,7 +56,7 @@ ROOT_URLCONF = "landleasing_django.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["landlease_app/"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

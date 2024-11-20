@@ -21,12 +21,12 @@ from landlease_app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.client_home, name="home"),
-    path("client/", views.client_cart, name="client-cart"),
-    path("client/", views.client_about, name="client-about"),
-    path("client/", views.client_profile, name="client-profile"),
-    path("client/", views.client_login, name="client-login"),
-    path("client/", views.client_register, name="client-register")
+    path("", views.client_home, name="client-home"),
+    path("client", views.client_cart, name="client-cart"),
+    path("client", views.client_about, name="client-about"),
+    path("client", views.client_profile, name="client-profile"),
+    path("client", views.client_login, name="client-login"),
+    path("client", views.client_register, name="client-register")
 
 
     #TODO add application form 

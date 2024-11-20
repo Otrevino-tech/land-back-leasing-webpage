@@ -1,0 +1,13 @@
+.body{
+    background-color: lavenderblush;
+    font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 0; margin-left:0; 
+    
+}
+
+.header{
+    display: flex; 
+    background-color: orange;
+    font-family: inherit;
+    
+}
