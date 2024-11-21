@@ -19,41 +19,41 @@ def admin_home(request):
 # Client
 def client_cart(request): 
     __client_helper()
-    return render(request, "templates/client/cart.html")
+    return render(request, "client/cart.html")
 
 def client_about(request): 
     __client_helper()
-    return render(request, "templates/client/about.html")
+    return render(request, "client/about.html")
 
 def client_profile(request): 
     __client_helper()
-    return render(request, "templates/client/profile.html")
+    return render(request, "client/profile.html")
 
 def client_login(request): 
     __client_helper()
-    return render(request, "templates/client/login.html")
+    return render(request, "client/login.html")
 
 def client_register(request): 
     __client_helper()
-    return render(request, "templates/client/register.html")
+    return render(request, "client/register.html")
 
 # admin
 def admin_cart(request): 
     __admin_helper()
-    return render(request, "templates/admin/cart.html")
+    return render(request, "admin/cart.html")
 
 def  admin_about(request): 
     __admin_helper()
-    return render(request, "templates/admin/about.html")
+    return render(request, "admin/about.html")
 
 def admin_profile(request): 
     __admin_helper()
-    return render(request, "templates/admin/profile.html")
+    return render(request, "admin/profile.html")
 
 def admin_login(request): 
     __admin_helper()
-    return render(request, "templates/admin/login.html")
+    return render(request, "admin/login.html")
 
 def admin_register(request): 
     __admin_helper()
-    return render(request, "templates/admin/register.html")
+    return render(request, "admin/register.html")
