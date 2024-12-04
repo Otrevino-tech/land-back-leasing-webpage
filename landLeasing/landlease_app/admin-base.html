@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="{% static 'static/mainstyle.css' %}"> 
+        <link rel="stylesheet" href="{% static 'mainstyle.css' %}"> 
         {% block title %}
-            <title> base(if this pops up theres something wrong) </title>
+            <title> base(if this pops up theres something wrong lol) </title>
         {% endblock %}
     </head>
 
@@ -13,9 +13,9 @@
         <header> 
 
             <a href='{% url "client-about" %}'> About </a>
-            <a href="{% url 'client-cart' %}"> Cart </a>
-            <a href="{% url 'client-home' %}"> Home </a>
-            <a id="profile-status" href="{% url 'client-profile' %}"> Log in / Signup </a>
+            <a href="{% url 'client-cart'%}"> Cart </a>
+            <a href="{% url 'client-home'%}"> Home </a>
+            <a id="profile-status" href="{% url 'client-profile'%}"> Log in / Signup </a>
 
         </header>
 
